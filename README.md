@@ -5,7 +5,7 @@ docker's image nginx-php-alpine
 ## Usage
   
 ```bash
-  docker run -p 8888:80 -e PORT='8888' --name wordpress damienmillet/wordpress
+docker run -p 8888:80 -e PORT='8888' --name wordpress damienmillet/wordpress
 ```
 
 ## Access
