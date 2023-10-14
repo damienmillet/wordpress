@@ -3,8 +3,6 @@ FROM alpine:latest
 
 WORKDIR /app
 
-ENV PORT=80
-
 RUN apk update
 RUN apk add openrc nginx php-fpm php-mysqli mysql mysql-client --no-cache
 

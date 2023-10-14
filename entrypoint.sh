@@ -18,8 +18,10 @@ if [ ! -f /var/www/localhost/htdocs/wordpress/wp-config.php ]; then
   sed -i 's/password_here/password/g' /var/www/localhost/htdocs/wordpress/wp-config.php
   chown -R root:www-data /var/www/
   wget --post-data="weblog_title=Blog+de+Test&user_name=demo&admin_password=demo&admin_password2=demo&pw_weak=on&admin_email=demo%40demo.fr&Submit=Installer+WordPress" http://localhost/wp-admin/install.php?step=2 -O /dev/null
-  echo "define( 'WP_HOME', 'http://localhost:$PORT' );" >> /var/www/localhost/htdocs/wordpress/wp-config.php
-  echo "define( 'WP_SITEURL', 'http://localhost:$PORT' );" >> /var/www/localhost/htdocs/wordpress/wp-config.php
+  if [ -n "$PORT" ]; then
+    echo "define( 'WP_HOME', 'http://localhost:$PORT' );" >> /var/www/localhost/htdocs/wordpress/wp-config.php
+    echo "define( 'WP_SITEURL', 'http://localhost:$PORT' );" >> /var/www/localhost/htdocs/wordpress/wp-config.php
+  fi
 fi
 
 if [ -n "$RSYSLOG_HOST" ]; then
