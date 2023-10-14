@@ -28,7 +28,7 @@ if [ -n "$RSYSLOG_HOST" ]; then
   if [ ! -f /etc/rsyslog.conf ]; then
     apk add rsyslog --no-cache
     rc-update add rsyslog boot
-    sed -i 's/#module(load="imudp").*$/module(load="imudp")/' /etc/rsyslog.conf
+    sed -i '/imklog/s/^/#/' /etc/rsyslog.conf
     sed -i '/^#/d' /etc/rsyslog.conf
     sed -i '/^$/d' /etc/rsyslog.conf
     echo '#' >> /etc/rsyslog.conf
