@@ -17,8 +17,8 @@ docker run -p 8888:80 -e PORT='8888' --name wordpress damienmillet/wordpress
 |Name|Default Value|Description|
 |----|-----|-----------|
 |PORT|80|Port exposed by the container, needed cause of wordpress stupid logic|
+|RSYSLOG_HOST|`<ip>`|Host of the rsyslog server|
 
 ## Credentials
 
 Wordpress : `demo:demo`
-
