@@ -22,6 +22,18 @@ if [ ! -f /var/www/localhost/htdocs/wordpress/wp-config.php ]; then
   echo "define( 'WP_SITEURL', 'http://localhost:$PORT' );" >> /var/www/localhost/htdocs/wordpress/wp-config.php
 fi
 
+if [ -n "$RSYSLOG_HOST" ]; then
+  if [ ! -f /etc/rsyslog.conf ]; then
+    apk add rsyslog --no-cache
+    rc-update add rsyslog boot
+    sed -i '/^#/d' /etc/rsyslog.conf
+    sed -i '/^$/d' /etc/rsyslog.conf
+    echo '#' >> /etc/rsyslog.conf
+  fi
+  echo "*.* @$RSYSLOG_HOST:514" >> /etc/rsyslog.conf
+  rc-service rsyslog restart
+fi
+
 while true; do
   sleep 1000
 done
