@@ -1,4 +1,3 @@
-#docker run  -v /Users/damien/Documents/Blog/OC/ASR/734/P8\ -\ Supervisez\ le\ SI\ d\'une\ entreprise:/app -d --name wordpress -ti alpine
 FROM alpine:latest
 
 WORKDIR /app
