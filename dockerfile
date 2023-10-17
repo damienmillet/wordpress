@@ -10,10 +10,10 @@ RUN sed -i 's/server {/server {\n\troot \/var\/www\/localhost\/htdocs\/wordpress
 RUN sed -i 's/listen \[\:\:\]\:80 default_server;/listen \[\:\:\]\:80 default_server;\n\tlocation ~ \\\.php\$ {\n\t\tfastcgi_pass 127\.0\.0\.1:9000;\n\t\tfastcgi_index index\.php;\n\t\tinclude fastcgi\.conf;\n\t}/' /etc/nginx/http.d/default.conf
 
 COPY base.sql /app/base.sql
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+COPY entrypoint.sh /run/entrypoint.sh
+RUN chmod +x /run/entrypoint.sh
 
 EXPOSE 80
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/run/entrypoint.sh"]
 
