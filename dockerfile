@@ -3,7 +3,7 @@ FROM alpine:latest
 WORKDIR /app
 
 RUN apk update
-RUN apk add openrc nginx php-fpm php-mysqli mysql mysql-client --no-cache
+RUN apk add openrc nginx php-fpm php-mysqli mysql mysql-client nano --no-cache
 
 RUN sed -i 's/return 404;/index index\.php index\.html;/g' /etc/nginx/http.d/default.conf
 RUN sed -i 's/server {/server {\n\troot \/var\/www\/localhost\/htdocs\/wordpress;/g' /etc/nginx/http.d/default.conf 
